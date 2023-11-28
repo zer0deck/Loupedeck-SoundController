@@ -1,0 +1,42 @@
+# ==================================================================================================
+# GENERAL SETTINGS
+# ==================================================================================================
+
+type: plugin4
+name: SoundController
+displayName: SoundController
+pluginFileName: SoundControllerPlugin.dll
+version: 1.0
+author: zer0deck
+copyright: Copyright © 2023 Grandilevskii Aleksei (zer0deck).
+
+
+# ==================================================================================================
+# PLUGIN PROPERTIES
+# ==================================================================================================
+
+pluginFolderWin: win
+
+supportedDevices:
+    # LoupedeckCtFamily covers the following devices: Loupedeck CT, Live and Live S, and Razer Stream Controller.
+    - LoupedeckCtFamily
+
+# List of plugin capabilities.
+pluginCapabilities:
+    # Uncomment the following line if this plugin is an application plugin.
+    #- HasApplication
+
+    # Uncomment the following line if the plugin sends keyboard shortcuts to the target application.
+    #- ActivatesApplication
+
+minimumLoupedeckVersion: 5.7
+
+
+# ==================================================================================================
+# LOUPEDECK MARKETPLACE SETTINGS
+# ==================================================================================================
+
+license: MIT
+licenseUrl: https://opensource.org/licenses/MIT
+supportPageUrl: https://github.com/zer0deck/Loupedeck-SoundController/issues
+homePageUrl: https://github.com/zer0deck/Loupedeck-SoundController

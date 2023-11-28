@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>SoundController setup</title>
+    <link rel="icon" type="image/x-icon" href="https://upload.wikimedia.org/wikipedia/commons/e/e6/VLC_Icon.svg">
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Quattrocento' rel='stylesheet'>
+    <script>
+        let url;
+        function onPathEntering() {
+            var pathValue = document.getElementById("svclPathInput").value;
+            url = "loupedeck:plugin/SoundController/callback/setPath?" + pathValue;
+        }
+
+        function openUrl() {
+            if (url) {
+                var loupedeck_popup = window.open(url);
+                loupedeck_popup.onbeforeunload = function () {
+                    document.getElementById("headerInfo").innerHTML = "Path is set.";
+                    document.getElementById("supportedText").innerHTML = `<p>This page can be closed now.</p><p>If you want to change path - reload this page or use "Change path" button in Loupedeck software.</p><p>This page will close automatically after 10 seconds.</p>`;
+                };
+                document.getElementById("pathInputForm").style.display = 'none';
+                setTimeout(function () {
+                    window.close()
+                }, 10000);
+            }
+        }
+
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+        }
+
+        body {
+            display: flex;
+            background-color: #28282A;
+            color: white;
+            font-family: 'Quattrocento';
+            font-size: 30px;
+        }
+
+        div, form {
+            margin: auto;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Oswald';
+            font-size: 40px;
+        }
+
+        p {
+            line-height: 0.8;
+            font-size: 15px;
+        }
+
+        input {
+            height: 30px;
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="Icon256x256.png" width="128" height="128"/>
+        <h2 id="headerInfo">Enter the path to the <span style="color: #ff9900">svcl.exe</span></h2>
+
+        <form id="pathInputForm">
+            <input type="text" id="svclPathInput" name="svclPath" placeholder="example: C:\YOURPATH\svcl\svcl.exe" onchange="onPathEntering()" size="50">
+            <input type="button" value="Save" onclick="openUrl()">
+        </form>
+        <div id="supportedText">
+            <p>This plugin will not work without a third-party program <a href="https://www.nirsoft.net/utils/sound_volume_command_line.html" style="color: #ff9900">SoundVolumeCommandLine</a> (SVCL).</p>
+            <p>SVCL application is released and distributed as freeware. All rights reserved by Nir Sofer. We are NOT involved in the development of SVCL.</p>
+        </div>
+    </div>
+</body>
+
+</html>
